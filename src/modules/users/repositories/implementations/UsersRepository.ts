@@ -22,14 +22,18 @@ class UsersRepository implements IUsersRepository {
 
   create({ name, email }: ICreateUserDTO): User {
     const user = new User();
+
     Object.assign(user, {
       id: uuidV4(),
       name,
       email,
       admin: false,
       created_at: new Date(),
+      updated_at: new Date(),
     });
+
     this.users.push(user);
+
     return user;
   }
 
